@@ -6,6 +6,7 @@ import { UsersComponent } from './users/users.component';
 
 const routes: Route[] = [
 	{ path: 'users', component: UsersComponent },
+	{ path: 'users/:id', component: UsersComponent },
 	{ path: 'servers', component: ServersComponent },
 	{ path: '', component: HomeComponent }
 ];
