@@ -1,23 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { IUser } from '../models/user.model';
+import { UsersService } from '../services/users.service';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+	selector: 'app-users',
+	templateUrl: './users.component.html',
+	styleUrls: ['./users.component.css']
 })
-export class UsersComponent {
-  users = [
-    {
-      id: 1,
-      name: 'Max'
-    },
-    {
-      id: 2,
-      name: 'Anna'
-    },
-    {
-      id: 3,
-      name: 'Chris'
-    }
-  ];
+export class UsersComponent implements OnInit {
+	constructor(
+		private route: ActivatedRoute,
+		private usersService: UsersService
+	) {}
+
+	users$: Observable<IUser[]> = this.usersService.users$;
+
+	selectedUser$: Observable<IUser | null> = this.route.paramMap.pipe(
+		switchMap(params => {
+			const userId = params.get('id');
+			const id = userId ? +userId : null;
+			return this.usersService.findUser(id);
+		})
+	);
+
+	ngOnInit() {}
 }
