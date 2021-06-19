@@ -1,4 +1,4 @@
-<ng-container *ngIf="server">
+<ng-container *ngIf="server$ | async as server">
 	<h5>{{ server.name }}</h5>
 	<p>Server status is {{ server.status }}</p>
 </ng-container>
