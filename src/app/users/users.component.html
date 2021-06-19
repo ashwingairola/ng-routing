@@ -1,7 +1,12 @@
 <div class="row">
 	<div class="col-xs-12 col-sm-4">
 		<div class="list-group">
-			<a href="#" class="list-group-item" *ngFor="let user of users$ | async">
+			<a
+				href="#"
+				class="list-group-item"
+				*ngFor="let user of users$ | async"
+				[routerLink]="['/users', user.id]"
+			>
 				{{ user.name }}
 			</a>
 		</div>

@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TServerStatus } from 'src/app/models/server.model';
@@ -12,10 +11,7 @@ import { ServersService } from '../../../../services/servers.service';
 	styleUrls: ['./edit-server.component.css']
 })
 export class EditServerComponent implements OnInit, OnDestroy {
-	constructor(
-		private serversService: ServersService,
-		private route: ActivatedRoute
-	) {}
+	constructor(private serversService: ServersService) {}
 
 	server$ = this.serversService.selectedServer$;
 	serverName?: string = '';
