@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { IServer } from 'src/app/models/server.model';
-import { ServersService } from '../../../../services/servers.service';
+import { ServersService } from '../../../services/servers.service';
 
 @Component({
 	selector: 'app-server',

@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TServerStatus } from 'src/app/models/server.model';
 
-import { ServersService } from '../../../../services/servers.service';
+import { ServersService } from '../../../services/servers.service';
 
 @Component({
 	selector: 'app-edit-server',

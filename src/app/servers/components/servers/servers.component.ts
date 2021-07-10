@@ -3,7 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, of, Subject } from 'rxjs';
 import { filter, map, switchMap, takeUntil } from 'rxjs/operators';
 import { IServer } from '../../../models/server.model';
-import { ServersService } from '../../../services/servers.service';
+import { ServersService } from '../../services/servers.service';
 
 @Component({
 	selector: 'app-servers',

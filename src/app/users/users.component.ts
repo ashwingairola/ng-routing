@@ -18,13 +18,14 @@ export class UsersComponent implements OnInit {
 
 	users$: Observable<IUser[]> = this.usersService.users$;
 
-	selectedUser$: Observable<IUser | null> = this.route.paramMap.pipe(
-		switchMap(params => {
-			const userId = params.get('id');
-			const id = userId ? +userId : null;
-			return this.usersService.findUser(id);
-		})
-	);
+	selectedUser$?: Observable<IUser | null> =
+		this.route.firstChild?.paramMap.pipe(
+			switchMap(params => {
+				const userId = params.get('id');
+				const id = userId ? +userId : null;
+				return this.usersService.findUser(id);
+			})
+		);
 
 	ngOnInit() {}
 }

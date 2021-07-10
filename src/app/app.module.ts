@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { UserComponent } from './users/user/user.component';
-import { ServersService } from './services/servers.service';
+import { ServersService } from './servers/services/servers.service';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
