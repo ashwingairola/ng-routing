@@ -48,9 +48,4 @@ export class ServersComponent implements OnInit, OnDestroy {
 	ngOnDestroy() {
 		this._destroy$.next();
 	}
-
-	onReload() {
-		// this.router.navigate(['servers'], { relativeTo: this.route });
-		this.router.navigate([''], { relativeTo: this.route });
-	}
 }
