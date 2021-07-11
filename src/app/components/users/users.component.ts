@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { IUser } from '../models/user.model';
-import { UsersService } from '../services/users.service';
+import { IUser } from '../../models/user.model';
+import { UsersService } from '../../services/users.service';
 
 @Component({
 	selector: 'app-users',

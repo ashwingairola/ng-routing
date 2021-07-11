@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, of, Subject } from 'rxjs';
 import { filter, map, switchMap, takeUntil } from 'rxjs/operators';
-import { IServer } from '../../../models/server.model';
+import { IServer } from '../../../../models/server.model';
 import { ServersService } from '../../services/servers.service';
 
 @Component({

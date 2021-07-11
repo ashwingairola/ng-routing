@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IServer, TServerStatus } from '../../models/server.model';
+import { IServer, TServerStatus } from '../../../models/server.model';
 
 @Injectable({ providedIn: 'root' })
 export class ServersService {
