@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+
 import { IUser } from 'src/app/models/user.model';
 import { UsersService } from '../../services/users.service';
 
@@ -18,16 +18,5 @@ export class UsersComponent implements OnInit {
 
 	users$: Observable<IUser[]> = this.usersService.users$;
 
-	selectedUser$?: Observable<IUser | null> =
-		this.route.firstChild?.paramMap.pipe(
-			switchMap(params => {
-				const userId = params.get('id');
-				const id = userId ? +userId : null;
-				return this.usersService.findUser(id);
-			})
-		);
-
-	ngOnInit() {
-		console.log(this.route.snapshot.firstChild);
-	}
+	ngOnInit() {}
 }

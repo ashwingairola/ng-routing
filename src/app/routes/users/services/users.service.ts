@@ -23,13 +23,11 @@ export class UsersService {
 	findUser(id: number | null): Observable<IUser | null> {
 		return this._users$.pipe(
 			map(users => {
-				console.log(id);
 				if (!id) {
 					return null;
 				}
 
 				const user = users.find(user => user.id === id);
-				console.log(user);
 
 				if (user) {
 					return { ...user };
