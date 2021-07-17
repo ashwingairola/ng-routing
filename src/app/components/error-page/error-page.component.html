@@ -1,0 +1,8 @@
+<h3>
+	<ng-container
+		*ngIf="errorMessage$ | async as errorMessage; else genericMessage"
+	>
+		{{ errorMessage }}
+	</ng-container>
+	<ng-template #genericMessage>An error occurred.</ng-template>
+</h3>
