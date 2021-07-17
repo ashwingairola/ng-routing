@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
+import { CanComponentDeactivate } from 'src/app/guards/can-deactivate.guard';
 import { TServerStatus } from 'src/app/models/server.model';
 
 import { ServersService } from '../../../services/servers.service';
@@ -11,16 +12,20 @@ import { ServersService } from '../../../services/servers.service';
 	templateUrl: './edit-server.component.html',
 	styleUrls: ['./edit-server.component.css']
 })
-export class EditServerComponent implements OnInit, OnDestroy {
+export class EditServerComponent
+	implements OnInit, OnDestroy, CanComponentDeactivate
+{
 	constructor(
 		private serversService: ServersService,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private router: Router
 	) {}
 
 	server$ = this.serversService.selectedServer$;
 	serverName?: string = '';
 	serverStatus?: string = '';
 	allowEdit = false;
+	changesSaved = false;
 
 	private _serverId?: number;
 	private _destroy$ = new Subject<void>();
@@ -50,6 +55,27 @@ export class EditServerComponent implements OnInit, OnDestroy {
 				name: this.serverName,
 				status: this.serverStatus as TServerStatus
 			});
+			this.changesSaved = true;
+			this.router.navigate(['../'], { relativeTo: this.route });
 		}
+	}
+
+	canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+		if (!this.allowEdit) {
+			return true;
+		}
+
+		return this.server$.pipe(
+			map(server => {
+				if (
+					(this.serverName !== server?.name ||
+						this.serverStatus !== server?.status) &&
+					!this.changesSaved
+				) {
+					return confirm('Do you want to discard your changes?');
+				}
+				return true;
+			})
+		);
 	}
 }
