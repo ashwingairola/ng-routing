@@ -5,6 +5,7 @@ import { CanDeactivateGuard } from 'src/app/guards/can-deactivate.guard';
 import { EditServerComponent } from './components/servers/edit-server/edit-server.component';
 import { ServerComponent } from './components/servers/server/server.component';
 import { ServersComponent } from './components/servers/servers.component';
+import { ServerResolver } from './resolvers/server.resolver';
 
 const routes: Routes = [
 	{
@@ -12,7 +13,12 @@ const routes: Routes = [
 		component: ServersComponent,
 		canActivateChild: [AuthGuard],
 		children: [
-			{ path: ':id', component: ServerComponent },
+			{
+				path: ':id',
+				component: ServerComponent,
+				resolve: { server: ServerResolver }
+				// data: { server: { id: 1, name: 'A server' } }
+			},
 			{
 				path: ':id/edit',
 				component: EditServerComponent,

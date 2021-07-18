@@ -5,7 +5,7 @@ import { BehaviorSubject, of } from 'rxjs';
 	providedIn: 'root'
 })
 export class AuthService {
-	private _loggedIn = new BehaviorSubject(false);
+	private _loggedIn = new BehaviorSubject(true);
 
 	loggedIn = this._loggedIn.asObservable();
 

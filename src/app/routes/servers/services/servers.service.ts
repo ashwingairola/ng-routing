@@ -45,6 +45,12 @@ export class ServersService {
 		this._selectedServer$.next(server);
 	}
 
+	getServer(id: number | null) {
+		return this._servers$.pipe(
+			map(servers => servers.find(server => server.id === id) || null)
+		);
+	}
+
 	updateServer(
 		id: number,
 		serverInfo: { name: string; status: TServerStatus }
