@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
-import { CanComponentDeactivate } from 'src/app/guards/can-deactivate.guard';
-import { TServerStatus } from 'src/app/models/server.model';
 
+import { CanComponentDeactivate } from '../../../../../guards/can-deactivate.guard';
+import { TServerStatus } from '../../../../../models/server.model';
 import { ServersService } from '../../../services/servers.service';
 
 @Component({

@@ -7,7 +7,7 @@ import {
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { IServer } from 'src/app/models/server.model';
+import { IServer } from '../../../models/server.model';
 import { ServersService } from '../services/servers.service';
 
 @Injectable()

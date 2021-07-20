@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IServer } from 'src/app/models/server.model';
+import { IServer } from '../../../../../models/server.model';
 
 @Component({
 	selector: 'app-server',
