@@ -4,7 +4,7 @@ import {
 	RouterStateSnapshot,
 	ActivatedRouteSnapshot
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { IServer } from '../../../models/server.model';
@@ -25,5 +25,11 @@ export class ServerResolver implements Resolve<IServer | null> {
 				console.log(server);
 			})
 		);
+
+		// return of<IServer>({ id: 1, name: 'myserver', status: 'online' }).pipe(
+		// 	tap(server => {
+		// 		console.log(server);
+		// 	})
+		// );
 	}
 }

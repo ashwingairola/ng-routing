@@ -38,13 +38,6 @@ export class ServersService {
 		})
 	);
 
-	selectServer(id: number | null) {
-		const servers = this._servers$.getValue();
-		const server = servers.find(server => server.id === id) || null;
-
-		this._selectedServer$.next(server);
-	}
-
 	getServer(id: number | null) {
 		return this._servers$.pipe(
 			map(servers => servers.find(server => server.id === id) || null)
