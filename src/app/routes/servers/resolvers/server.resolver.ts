@@ -17,7 +17,7 @@ export class ServerResolver implements Resolve<IServer | null> {
 	resolve(
 		route: ActivatedRouteSnapshot,
 		_state: RouterStateSnapshot
-	): Observable<IServer | null> {
+	): Observable<IServer | null> | Promise<IServer | null> | IServer | null {
 		const id = route.paramMap.get('id');
 		const serverId = id ? +id : null;
 		return this.serversService.getServer(serverId).pipe(
